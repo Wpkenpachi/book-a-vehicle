@@ -14,7 +14,7 @@ export default class VehicleReservationMemoryRepository implements VehicleReserv
     }
 
     async accountHasActivedBookedVehicle(account_id: number): Promise<boolean> {
-        const registerExists = this.bookedVehicles.find((bookedVehicles) => bookedVehicles.account_id === account_id);
+        const registerExists = this.bookedVehicles.find((bookedVehicles) => bookedVehicles.account_id === account_id && bookedVehicles.isReserved() );
         return !!registerExists;
     }   
 

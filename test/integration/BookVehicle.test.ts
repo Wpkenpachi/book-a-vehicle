@@ -5,6 +5,9 @@ import RegisterVehicle from "../../src/application/RegisterVehicle";
 import Account from "../../src/domain/Account";
 import Vehicle from "../../src/domain/Vehicle";
 import VehicleReservation from "../../src/domain/VehicleReservation";
+
+
+
 import AccountMemoryRepository from "../../src/infra/memory/AccountMemoryRepository";
 import VehicleMemoryRepository from "../../src/infra/memory/VehicleMemoryRepository";
 import VehicleReservationMemoryRepository from "../../src/infra/memory/VehicleReservationMemoryRepository";
@@ -22,7 +25,7 @@ test("Must book a vehicle", async function(){
     // Create Reservation
     const reservation = new VehicleReservation(vehicle.plate, new Date(), null, account_id);
     const bookedVehicle = new BookVehicle(vehicleReservationMemoryRepository);
-    await bookedVehicle.execute(reservation);
+    await bookedVehicle.execute(reservation, );
     const bookedList = await bookedVehicle.list();
     expect(bookedList).toHaveLength(1);
 });

@@ -1,4 +1,4 @@
-import VehicleRepository from "../domain/repositories/VehicleRepostory"
+import VehicleRepository from "../domain/VehicleRepostory";
 
 export default class GetVehicle {
     constructor(readonly vehicleRepository: VehicleRepository) {}

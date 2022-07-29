@@ -1,5 +1,6 @@
-import VehicleReservationRepository from "../domain/repositories/VehicleReservationRepostory";
+import Account from "../domain/Account";
 import VehicleReservation from "../domain/VehicleReservation";
+import VehicleReservationRepository from "../domain/VehicleReservationRepostory";
 
 export default class BookVehicle {
     constructor(readonly vehicleReservationRepository: VehicleReservationRepository){}

@@ -1,5 +1,5 @@
 import Account from "../domain/Account";
-import AccountRepository from "../domain/repositories/AccountRepository";
+import AccountRepository from "../domain/AccountRepository";
 
 export default class GetAccount {
     constructor(readonly accountRepository: AccountRepository){}

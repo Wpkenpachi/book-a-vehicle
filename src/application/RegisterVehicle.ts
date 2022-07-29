@@ -1,5 +1,5 @@
 import Vehicle from "../domain/Vehicle";
-import VehicleRepository from "../domain/repositories/VehicleRepostory";
+import VehicleRepository from "../domain/VehicleRepostory";
 
 export default class RegisterVehicle {
     constructor(readonly vehicleRepository: VehicleRepository) {}

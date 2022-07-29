@@ -2,7 +2,8 @@ export default class VehicleReservation {
     constructor(
         readonly plate: string,
         readonly reserved_at: Date = new Date(),
-        readonly returned_at: Date | null = null
+        readonly returned_at: Date | null = null,
+        readonly account_id: number
     ){
         this.isValidReservation();
     }
@@ -14,6 +15,6 @@ export default class VehicleReservation {
     }
 
     public isReserved(): boolean {
-        return !this.returned_at;
+        return this.returned_at === null;
     }
 }

@@ -15,5 +15,4 @@ export default class VehicleMemoryRepository implements VehicleRepository {
     async list(): Promise<Vehicle[]> {
         return this.vehicles;
     }
-
 }

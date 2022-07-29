@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1659061366659" clover="3.2.0">
+  <project timestamp="1659061366659" name="All files">
+    <metrics statements="57" coveredstatements="57" conditionals="9" coveredconditionals="9" methods="32" coveredmethods="32" elements="98" coveredelements="98" complexity="0" loc="57" ncloc="57" packages="3" files="11" classes="11"/>
+    <package name="application">
+      <metrics statements="23" coveredstatements="23" conditionals="2" coveredconditionals="2" methods="12" coveredmethods="12"/>
+      <file name="BookVehicle.ts" path="/home/wesleysantos/Área de Trabalho/scripts/happmobi/src/application/BookVehicle.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+      </file>
+      <file name="CreateAccount.ts" path="/home/wesleysantos/Área de Trabalho/scripts/happmobi/src/application/CreateAccount.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="7" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+      </file>
+      <file name="GetAccount.ts" path="/home/wesleysantos/Área de Trabalho/scripts/happmobi/src/application/GetAccount.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+      <file name="GetVehicle.ts" path="/home/wesleysantos/Área de Trabalho/scripts/happmobi/src/application/GetVehicle.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="6" type="stmt"/>
+      </file>
+      <file name="RegisterVehicle.ts" path="/home/wesleysantos/Área de Trabalho/scripts/happmobi/src/application/RegisterVehicle.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="8" count="7" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain">
+      <metrics statements="14" coveredstatements="14" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="5"/>
+      <file name="Account.ts" path="/home/wesleysantos/Área de Trabalho/scripts/happmobi/src/domain/Account.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+      </file>
+      <file name="Vehicle.ts" path="/home/wesleysantos/Área de Trabalho/scripts/happmobi/src/domain/Vehicle.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="8" type="stmt"/>
+      </file>
+      <file name="VehicleReservation.ts" path="/home/wesleysantos/Área de Trabalho/scripts/happmobi/src/domain/VehicleReservation.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="9" type="stmt"/>
+        <line num="4" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="9" type="stmt"/>
+        <line num="8" count="9" type="stmt"/>
+        <line num="12" count="9" type="cond" truecount="3" falsecount="0"/>
+        <line num="13" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="infra.memory">
+      <metrics statements="20" coveredstatements="20" conditionals="1" coveredconditionals="1" methods="15" coveredmethods="15"/>
+      <file name="AccountMemoryRepository.ts" path="/home/wesleysantos/Área de Trabalho/scripts/happmobi/src/infra/memory/AccountMemoryRepository.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="1" coveredconditionals="1" methods="5" coveredmethods="5"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="13" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+      </file>
+      <file name="VehicleMemoryRepository.ts" path="/home/wesleysantos/Área de Trabalho/scripts/happmobi/src/infra/memory/VehicleMemoryRepository.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+      </file>
+      <file name="VehicleReservationMemoryRepository.ts" path="/home/wesleysantos/Área de Trabalho/scripts/happmobi/src/infra/memory/VehicleReservationMemoryRepository.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

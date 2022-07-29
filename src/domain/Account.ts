@@ -1,3 +1,5 @@
 export default class Account {
-    constructor(readonly username: string, readonly password: string){}
+    id?: number;
+    constructor(readonly username: string, readonly password: string){
+    }
 }

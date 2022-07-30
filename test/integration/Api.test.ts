@@ -1,5 +1,5 @@
 import axios from "axios";
-import request = require("supertest");
+import * as request from "supertest";
 import app from "../../src/infra/http/Api";
 import sinon from "sinon";
 

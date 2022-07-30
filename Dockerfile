@@ -1,3 +1,9 @@
-FROM postgres:11-alpine
-
-COPY database.sql /docker-entrypoint-initdb.d/
+FROM node:16 as base
+WORKDIR /home/node/app
+COPY package*.json ./
+RUN yarn install
+COPY . .
+COPY swagger /usr/swagger
+# FROM base as production
+# ENV NODE_PATH=./dist
+# RUN npm run build

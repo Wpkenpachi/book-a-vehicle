@@ -1,0 +1,227 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a simple example NodeJS API made with Typescript to simulate a sample Vehicle Reservation System",
+        "version": "1.0.0",
+        "title": "BookAVehicle API",
+        "contact": {
+            "email": "angelportinari17@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "schemes": ["http"],
+    "host": "localhost:3000",
+    "basePath": "/api",
+    "paths" : {
+        "/authenticate": {
+            "post" : {
+                "summary" : "Authenticate",
+                "description": "Authenticate",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Credentials Body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username" : {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/AuthenticatedResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Invalid Token",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/vehicle" : {
+            "get" : {
+                "summary" : "Get all the Vehicles",
+                "description": "Get all the Vehicles",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                      "name": "Authorization",
+                      "in": "header",
+                      "description": "JWT access token",
+                      "required": false,
+                      "type": "string"
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/GetVehiclesResponse"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Invalid Token",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidTokenResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Invalid Credentials",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/book/vehicle" : {
+            "post" : {
+                "summary" : "Book a Vahicle",
+                "description": "Book a Vehicle",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT access token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "task object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "plate" : {
+                                    "type": "string"
+                                } 
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Invalid Token",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidTokenResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/return/vehicle" : {
+            "put" : {
+                "summary" : "Return Booked Vehicle",
+                "description": "Return Booked Vehicle",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT access token",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Invalid Token",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidTokenResponse"
+                        }
+                    }
+                }
+            }
+        }
+    }, 
+    "definitions": {
+        "GetVehiclesResponse": {
+            "type": "object",
+            "properties": {
+                "plate": {
+                     "type": "string"
+                },
+                "is_available": {
+                    "type": "number"
+                }
+            }
+        },
+        "BookVehicleBody": {
+            "type": "object",
+            "properties": {
+                "plate": {
+                    "type": "string"
+                }
+            }
+        },
+        "AuthenticateResponse": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "InvalidTokenResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "InvalidResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+
+        }
+    },
+    "securityDefinitions": {
+        "bearerAuth": {
+          "name": "Authorization",
+          "in": "header",
+          "type": "apiKey",
+          "description": "JWT Authorization header"
+        }
+    },
+    "security": [ { "bearerAuth": [] } ]
+}

@@ -16,3 +16,5 @@ Trata-se de uma API para gerenciar a reservas de veículos, a API deve disponibi
 - Cada usuário só pode reservar um veículo por vez.
 
 # Requirements
+- Docker
+- DockerCompose

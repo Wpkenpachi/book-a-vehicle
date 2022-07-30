@@ -5,13 +5,23 @@ import errorMiddleware from "./middlewares/error";
 import { authorize } from "./middlewares/authentication";
 import AccountController from "../../controller/AccountController";
 import PgPromiseConnectionAdapter from "../database/PgPromiseConnectionAdapter";
+import swaggerUi = require('swagger-ui-express');
+import fs = require('fs');
+
 const app = express();
 const router = express.Router();
+
+/* Swagger */
+const swaggerFile = (process.cwd()+"/swagger/swagger.json");
+const swaggerData = fs.readFileSync(swaggerFile, 'utf8');
+const customCss = fs.readFileSync((process.cwd()+"/swagger/swagger.css"), 'utf8');
+const swaggerDocument = JSON.parse(swaggerData);
 
 // Database Connection
 const connection = new PgPromiseConnectionAdapter()
 
 app.use(express.json());
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, undefined, undefined, customCss));
 app.use('/api', router);
 
 // Main Route

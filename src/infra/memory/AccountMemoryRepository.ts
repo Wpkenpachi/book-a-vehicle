@@ -7,6 +7,13 @@ export default class AccountMemoryRepository implements AccountRepository {
     constructor() {
         this.acounts = [];
     }
+    
+    getByUsernameAndPassword(account: Account): Promise<Account | undefined> {
+        throw new Error("Method not implemented.");
+    }
+    getByUsernameAndHashedPassword(account: Account): Promise<Account | undefined> {
+        throw new Error("Method not implemented.");
+    }
 
     async create(account: Account): Promise<number> {
         const alreadyExists = this.acounts.find(({ username }) => account.username === username);
@@ -16,7 +23,7 @@ export default class AccountMemoryRepository implements AccountRepository {
         return account.id;
     }
 
-    async get(account_id: number): Promise<Account|undefined> {
-        return this.acounts.find(({ id }) => account_id === id);
+    async get(account: Account): Promise<Account|undefined> {
+        return this.acounts.find(({ id }) => account.id === id);
     }
 }

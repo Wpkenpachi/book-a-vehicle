@@ -5,10 +5,11 @@ export default class GetVehicle {
 
     async execute(): Promise<Output[]> {
         const vehicles = await this.vehicleRepository.list();
-        return vehicles.map(({ plate }) => ({ plate }));
+        return vehicles.map(({ plate, is_available }) => ({ plate, is_available }));
     }
 }
 
 type Output = {
-    plate: string
+    plate: string,
+    is_available: number
 }

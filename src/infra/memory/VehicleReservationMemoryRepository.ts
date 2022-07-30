@@ -9,9 +9,9 @@ export default class VehicleReservationMemoryRepository implements VehicleReserv
         this.bookedVehicles = [];
     }
 
-    async returnVehicle(account_id: number, plate: string): Promise<void> {
+    async returnVehicle(account_id: number): Promise<void> {
         this.bookedVehicles = this.bookedVehicles.map<VehicleReservation>((item): VehicleReservation => {
-            if(item.account_id !== account_id || item.plate !== plate) return item;
+            if(item.account_id !== account_id) return item;
             return new VehicleReservation(item.plate, item.reserved_at, new Date(), account_id);
         });
         

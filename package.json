@@ -4,6 +4,7 @@
   "description": "Desenvolver API que deve ser criada com NodeJs + Typescript (NestJS) e banco de dados a sua escolha, é imprescindível o desenvolvimento da documentação com Swagger.",
   "main": "index.js",
   "scripts": {
+    "coverage": "jest --coverage && istanbul-badges-readme",
     "dev": "nodemon src/Server.ts",
     "build": "tsc --project ."
   },
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@types/swagger-jsdoc": "^6.0.1",
     "@types/swagger-ui-express": "^4.1.3",
+    "istanbul-badges-readme": "^1.8.2",
     "nodemon": "^2.0.19",
     "swagger-jsdoc": "^6.2.1",
     "swagger-ui-express": "^4.5.0"

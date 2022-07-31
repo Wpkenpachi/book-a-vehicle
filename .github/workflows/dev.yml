@@ -21,11 +21,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
+      - run: yarn install
       - run: mv .env.example .env
       - run: docker-compose up -d
       - name: Sleep for 10 seconds
         uses: jakejarvis/wait-action@master
         with:
           time: '10s'
-      - run: npm coverage
+      - run: yarn coverage

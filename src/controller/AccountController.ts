@@ -22,7 +22,7 @@ export default class AccountController {
             const useCase = new Authenticate(this.accountRepository);
             const done = await useCase.execute(account);
             if (done instanceof(Error)) next(new HttpException(404, done.message))
-            return response.status(200).send(done);
+            response.status(200).send(done);
         } catch (error) {
             next(error);
         }

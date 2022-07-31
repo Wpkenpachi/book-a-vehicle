@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">31.81% </span>
+                <span class="strong">47.61% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/22</span>
+                <span class='fraction'>10/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/5</span>
+                <span class='fraction'>3/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">31.81% </span>
+                <span class="strong">47.61% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/22</span>
+                <span class='fraction'>10/21</span>
             </div>
         
             
@@ -108,11 +108,9 @@
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -127,10 +125,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -140,9 +138,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -158,10 +156,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Account from "../../domain/Account";
 import AccountRepository from "../../domain/AccountRepository";
 import Connection from "./Connection";
-import PgPromiseConnectionAdapter from "./PgPromiseConnectionAdapter";
 &nbsp;
 export default class AccountDatabaseRepostiry implements AccountRepository {
-    constructor(readonly connection: Connection = <span class="branch-0 cbranch-no" title="branch not covered" >new PgPromiseConnectionAdapter())</span>{}
+    constructor(readonly connection: Connection){}
 &nbsp;
     async <span class="fstat-no" title="function not covered" >create(</span>account: Account): Promise&lt;number&gt; {
 <span class="cstat-no" title="statement not covered" >        try {</span>
@@ -172,11 +169,11 @@ export default class AccountDatabaseRepostiry implements AccountRepository {
         }
     }
 &nbsp;
-    async <span class="fstat-no" title="function not covered" >getByUsernameAndHashedPassword(</span>account: Account): Promise&lt;any | undefined&gt; {
-        const { username, password } = <span class="cstat-no" title="statement not covered" >account;</span>
-<span class="cstat-no" title="statement not covered" >        try {</span>
-            const [row] = <span class="cstat-no" title="statement not covered" >await this.connection.query("select * from accounts where username = $1 and password = $2", [username, password]);</span>
-<span class="cstat-no" title="statement not covered" >            return row;</span>
+    async getByUsernameAndHashedPassword(account: Account): Promise&lt;any | undefined&gt; {
+        const { username, password } = account;
+        try {
+            const [row] = await this.connection.query("select * from accounts where username = $1 and password = $2", [username, password]);
+            return row;
         } catch (error) {
 <span class="cstat-no" title="statement not covered" >            throw error;</span>
         }
@@ -186,9 +183,9 @@ export default class AccountDatabaseRepostiry implements AccountRepository {
         const { username, password } = account;
         try {
             const [row] = await this.connection.query("select * from accounts where username = $1 and password = crypt($2, password)", [username, password]);
-<span class="cstat-no" title="statement not covered" >            return row;</span>
+            return row;
         } catch (error) {
-            throw error;
+<span class="cstat-no" title="statement not covered" >            throw error;</span>
         }
     }
 &nbsp;
@@ -208,7 +205,7 @@ export default class AccountDatabaseRepostiry implements AccountRepository {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-07-31T02:03:13.017Z
+                at 2022-07-31T04:25:15.341Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

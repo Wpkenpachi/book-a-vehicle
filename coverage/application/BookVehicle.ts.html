@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.14% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/14</span>
+                <span class='fraction'>10/14</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">10% </span>
+                <span class="strong">90% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/10</span>
+                <span class='fraction'>9/10</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -90,20 +90,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Account from "../domain/Account";
 import VehicleRepository from "../domain/VehicleRepostory";
@@ -111,20 +111,20 @@ import VehicleReservation from "../domain/VehicleReservation";
 import VehicleReservationRepository from "../domain/VehicleReservationRepostory";
 &nbsp;
 export default class BookVehicle {
-<span class="fstat-no" title="function not covered" >    constructor(readonly <span class="cstat-no" title="statement not covered" >v</span>ehicleReservationRepository: VehicleReservationRepository,</span> readonly <span class="cstat-no" title="statement not covered" >vehicleRepository: VehicleRepository)</span>{}
+    constructor(readonly vehicleReservationRepository: VehicleReservationRepository, readonly vehicleRepository: VehicleRepository){}
 &nbsp;
     async <span class="fstat-no" title="function not covered" >list(</span>): Promise&lt;VehicleReservation[]&gt; {
 <span class="cstat-no" title="statement not covered" >        return await this.vehicleReservationRepository.list();</span>
     }
 &nbsp;
-    async <span class="fstat-no" title="function not covered" >execute(</span>vehicleReservation: VehicleReservation): Promise&lt;void|Error&gt; {
-        const vehicleExists = <span class="cstat-no" title="statement not covered" >await this.vehicleRepository.get(vehicleReservation.plate);</span>
-<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if (!vehicleExists) <span class="cstat-no" title="statement not covered" >return new Error("Vehicle does not exist in database");</span></span>
-        const accountAlreadyHasActivedBook = <span class="cstat-no" title="statement not covered" >await this.vehicleReservationRepository.accountHasActivedBookedVehicle(vehicleReservation.account_id)</span>
-<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if (accountAlreadyHasActivedBook) <span class="cstat-no" title="statement not covered" >return new Error("This account already have an booked vehicle actived");</span></span>
-        const vehicleAlreadyBooked = <span class="cstat-no" title="statement not covered" >await this.vehicleReservationRepository.vehicleHasActivedBook(vehicleReservation.plate);</span>
-<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if (vehicleAlreadyBooked) <span class="cstat-no" title="statement not covered" >return new Error("Vehicle is arealdy booked");</span></span>
-<span class="cstat-no" title="statement not covered" >        await this.vehicleReservationRepository.book(vehicleReservation);</span>
+    async execute(vehicleReservation: VehicleReservation): Promise&lt;void|Error&gt; {
+        const vehicleExists = await this.vehicleRepository.get(vehicleReservation.plate);
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!vehicleExists) <span class="cstat-no" title="statement not covered" >return new Error("Vehicle does not exist in database");</span>
+        const accountAlreadyHasActivedBook = await this.vehicleReservationRepository.accountHasActivedBookedVehicle(vehicleReservation.account_id)
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (accountAlreadyHasActivedBook) <span class="cstat-no" title="statement not covered" >return new Error("This account already have an booked vehicle actived");</span>
+        const vehicleAlreadyBooked = await this.vehicleReservationRepository.vehicleHasActivedBook(vehicleReservation.plate);
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (vehicleAlreadyBooked) <span class="cstat-no" title="statement not covered" >return new Error("Vehicle is arealdy booked");</span>
+        await this.vehicleReservationRepository.book(vehicleReservation);
     }
 }</pre></td></tr></table></pre>
 
@@ -133,7 +133,7 @@ export default class BookVehicle {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-07-31T02:03:13.017Z
+                at 2022-07-31T04:25:15.341Z
             </div>
         <script src="../prettify.js"></script>
         <script>

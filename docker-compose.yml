@@ -25,7 +25,7 @@ services:
       target: base
     env_file: .env
     volumes:
-      - ./src:/home/node/app/src
+      - ./:/home/node/app/
       - ./nodemon.json:/home/node/app/src/nodemon.json
     environment:
       - PORT=${PORT}

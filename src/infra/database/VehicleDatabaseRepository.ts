@@ -1,30 +1,29 @@
 import Vehicle from "../../domain/Vehicle";
-import VehicleRepository from "../../domain/VehicleRepostory";
+import VehicleRepository from "../../domain/repository/VehicleRepostory";
 import Connection from "./Connection";
-import PgPromiseConnectionAdapter from "./PgPromiseConnectionAdapter";
 
 export default class VehicleDatabaseRepository implements VehicleRepository {
     constructor(readonly connection: Connection) {
     }
 
-    async get(plate: string): Promise<Vehicle> {
+    async get(plate: string): Promise<Vehicle|Error> {
         try {
             const [raw] = await this.connection.query("select * from vehicles where plate = $1", [plate]);
             return raw;
         } catch (error) {
-            throw error;
+            return error as unknown as Error;
         }
     }
 
-    async register(vehicle: Vehicle): Promise<void> {
+    async register(vehicle: Vehicle): Promise<void|Error> {
         try {
             const [row] = await this.connection.query("insert into vehicles(model, plate) values($1, $2) returning *", [vehicle.model, vehicle.plate]);
         } catch (error) {
-            throw error;
+            return error as unknown as Error;
         }
     }
 
-    async list(): Promise<any[]> {
+    async list(): Promise<any[]|Error> {
         try {
             const raw = await this.connection.query(`
                     select
@@ -43,7 +42,7 @@ export default class VehicleDatabaseRepository implements VehicleRepository {
             `, []);
             return raw;
         } catch (error) {
-            throw error;
+            return error as unknown as Error;
         }
     }
 }

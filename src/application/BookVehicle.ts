@@ -1,7 +1,6 @@
-import Account from "../domain/Account";
-import VehicleRepository from "../domain/VehicleRepostory";
-import VehicleReservation from "../domain/VehicleReservation";
-import VehicleReservationRepository from "../domain/VehicleReservationRepostory";
+import VehicleRepository from "../domain/repository/VehicleRepostory";
+import VehicleReservation from "../domain/repository/VehicleReservation";
+import VehicleReservationRepository from "../domain/repository/VehicleReservationRepostory";
 
 export default class BookVehicle {
     constructor(readonly vehicleReservationRepository: VehicleReservationRepository, readonly vehicleRepository: VehicleRepository){}

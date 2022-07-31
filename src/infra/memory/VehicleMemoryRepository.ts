@@ -1,5 +1,5 @@
 import Vehicle from "../../domain/Vehicle";
-import VehicleRepository from "../../domain/VehicleRepostory";
+import VehicleRepository from "../../domain/repository/VehicleRepostory";
 
 export default class VehicleMemoryRepository implements VehicleRepository {
     private vehicles: Vehicle[] = [];

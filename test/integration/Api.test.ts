@@ -1,12 +1,13 @@
 import supertest from "supertest";
-import Server from "../../src/Server";
+import app from "../../src/infra/http/Api";
 
 jest.setTimeout(50000);
+process.env.NODE_ENV = "development";
 describe("Must test api calls", function() {
     let access_token: string;
     
     beforeAll(async () => {
-        const { body: body } = await supertest(Server).post("/api/authenticate")
+        const { body: body } = await supertest(app).post("/api/authenticate")
         .send({
             username: "wesley.paulo",
             password: "4321"
@@ -18,7 +19,7 @@ describe("Must test api calls", function() {
     }, 3000);
 
     test("Must Try List Vehicles without access_token", async function () {
-        await supertest(Server)
+        await supertest(app)
             .get('/api/vehicle')
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
@@ -26,7 +27,7 @@ describe("Must test api calls", function() {
     });
 
     test("Must List Vehicles", async function () {
-        await supertest(Server)
+        await supertest(app)
             .get('/api/vehicle')
             .set('Accept', 'application/json')
             .set('Authorization', `Bearer ${access_token}`)
@@ -34,7 +35,7 @@ describe("Must test api calls", function() {
     });
 
     test("Must Try Book Vehicles without access_token", async function () {
-        const { body } = await supertest(Server)
+        const { body } = await supertest(app)
             .post('/api/book/vehicle')
             .set('Accept', 'application/json')
             .set('Content-Type', 'application/json')
@@ -47,7 +48,7 @@ describe("Must test api calls", function() {
     });
 
     test("Must Book a Vehicle", async function () {
-        const {body} = await supertest(Server)
+        const {body} = await supertest(app)
             .post('/api/book/vehicle')
             .set('Content-Type', 'application/json')
             .set('Authorization', `Bearer ${access_token}`)
@@ -56,7 +57,7 @@ describe("Must test api calls", function() {
             })
             .expect(200);
         expect(body).toBeTruthy();
-        await supertest(Server)
+        await supertest(app)
             .put('/api/return/vehicle')
             .set('Accept', 'application/json')
             .set('Content-Type', 'application/json')

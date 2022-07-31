@@ -1,4 +1,4 @@
-import VehicleReservation from "../../src/domain/VehicleReservation";
+import VehicleReservation from "../../src/domain/repository/VehicleReservation";
 
 test("Must create a Vehicle Reservation", function() {
     const vehicleReservation = new VehicleReservation("ABC1234", new Date("2022-07-28T10:00:00"), null, 1);

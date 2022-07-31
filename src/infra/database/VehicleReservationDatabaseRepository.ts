@@ -1,6 +1,6 @@
 import Vehicle from "../../domain/Vehicle";
-import VehicleReservation from "../../domain/VehicleReservation";
-import VehicleReservationRepository from "../../domain/VehicleReservationRepostory";
+import VehicleReservation from "../../domain/repository/VehicleReservation";
+import VehicleReservationRepository from "../../domain/repository/VehicleReservationRepostory";
 import Connection from "./Connection";
 import PgPromiseConnectionAdapter from "./PgPromiseConnectionAdapter";
 

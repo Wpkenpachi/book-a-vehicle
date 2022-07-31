@@ -1,5 +1,5 @@
 import Account from "../domain/Account";
-import AccountRepository from "../domain/AccountRepository";
+import AccountRepository from "../domain/repository/AccountRepository";
 import { generateToken, validateToken } from "../utils/jwt.utils";
 
 export default class GetAuthenticatedAccount {

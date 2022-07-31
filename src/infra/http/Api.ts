@@ -6,7 +6,16 @@ import { authorize } from "./middlewares/authentication";
 import AccountController from "../../controller/AccountController";
 import PgPromiseConnectionAdapter from "../database/PgPromiseConnectionAdapter";
 import swaggerUi = require('swagger-ui-express');
-import fs = require('fs');
+import dotenv from "dotenv";
+import fs from "fs";
+
+if (process.env.NODE_ENV == 'production') {
+    dotenv.config();
+} else {
+    dotenv.config({
+        path: '.env.test'
+    });
+}
 
 const app = express();
 const router = express.Router();
@@ -23,9 +32,6 @@ const connection = new PgPromiseConnectionAdapter()
 app.use(express.json());
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, undefined, undefined, customCss));
 app.use('/api', router);
-
-// Main Route
-router.get('/', async (request: Request, response: Response) => response.end());
 
 // Vehicle Routes
 const vehicleConroller = new VehicleController(connection);

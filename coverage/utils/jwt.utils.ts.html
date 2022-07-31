@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">91.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/12</span>
+                <span class='fraction'>11/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>2/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.27% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -98,12 +98,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -112,11 +112,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { sign, SignOptions, verify } from "jsonwebtoken";
@@ -124,14 +124,14 @@
 /**
  * generates JWT used for local testing
  */
-export function <span class="fstat-no" title="function not covered" >generateToken(</span>payload: any) {
+export function generateToken(payload: any) {
   // read private key value
-  const secret = <span class="cstat-no" title="statement not covered" >process.env.SECRET as string || 'omaewa';</span>
-  const signInOptions: SignOptions = <span class="cstat-no" title="statement not covered" >{</span>
+  const secret = process.env.SECRET as string || <span class="branch-1 cbranch-no" title="branch not covered" >'omaewa';</span>
+  const signInOptions: SignOptions = {
     expiresIn: '1h'
   };
   // generate JWT
-<span class="cstat-no" title="statement not covered" >  return sign(payload, secret, signInOptions);</span>
+  return sign(payload, secret, signInOptions);
 };
 &nbsp;
 /**
@@ -139,12 +139,12 @@ export function <span class="fstat-no" title="function not covered" >generateTok
  *
  * @param token the expected token payload
  */
-export function <span class="fstat-no" title="function not covered" >validateToken(</span>token: string): Promise&lt;any&gt; {
-  const secret = <span class="cstat-no" title="statement not covered" >process.env.SECRET as string || 'omaewa  ';</span>
-<span class="cstat-no" title="statement not covered" >  return new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    verify(token, secret, <span class="fstat-no" title="function not covered" >(e</span>rror, decoded: any) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      <span class="missing-if-branch" title="if path not taken" >I</span>if (error) <span class="cstat-no" title="statement not covered" >return reject(error);</span></span>
-<span class="cstat-no" title="statement not covered" >      resolve(decoded);</span>
+export function validateToken(token: string): Promise&lt;any&gt; {
+  const secret = process.env.SECRET as string || <span class="branch-1 cbranch-no" title="branch not covered" >'omaewa  ';</span>
+  return new Promise((resolve, reject) =&gt; {
+    verify(token, secret, (error, decoded: any) =&gt; {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (error) <span class="cstat-no" title="statement not covered" >return reject(error);</span>
+      resolve(decoded);
     })
   });
 }</pre></td></tr></table></pre>
@@ -154,7 +154,7 @@ export function <span class="fstat-no" title="function not covered" >validateTok
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-07-31T02:03:13.017Z
+                at 2022-07-31T04:25:15.341Z
             </div>
         <script src="../prettify.js"></script>
         <script>

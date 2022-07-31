@@ -1,6 +1,6 @@
 import Account from "../../domain/Account";
-import VehicleReservation from "../../domain/VehicleReservation";
-import VehicleReservationRepository from "../../domain/VehicleReservationRepostory";
+import VehicleReservation from "../../domain/repository/VehicleReservation";
+import VehicleReservationRepository from "../../domain/repository/VehicleReservationRepostory";
 
 export default class VehicleReservationMemoryRepository implements VehicleReservationRepository {
     bookedVehicles: VehicleReservation[];

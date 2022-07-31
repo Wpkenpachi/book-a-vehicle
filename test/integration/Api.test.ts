@@ -1,24 +1,25 @@
-import axios from "axios";
-import * as request from "supertest";
+import supertest from "supertest";
+//import Server from "../../src/Server";
 import app from "../../src/infra/http/Api";
-import sinon from "sinon";
-
+const Server = app;
+jest.setTimeout(50000);
 describe("Must test api calls", function() {
     let access_token: string;
+    
     beforeAll(async () => {
-        const { body: body1 } = await request(app).post("/api/authenticate")
+        const { body: body } = await supertest(Server).post("/api/authenticate")
         .send({
             username: "wesley.paulo",
             password: "4321"
         })
         .set('Accept', 'application/json')
         .expect(200);
-        access_token = body1.access_token;
-        expect(body1).toHaveProperty('access_token');
-    });
+        access_token = body.access_token;
+        expect(body).toHaveProperty('access_token');
+    }, 3000);
 
     test("Must Try List Vehicles without access_token", async function () {
-        await request(app)
+        await supertest(Server)
             .get('/api/vehicle')
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
@@ -26,7 +27,7 @@ describe("Must test api calls", function() {
     });
 
     test("Must List Vehicles", async function () {
-        await request(app)
+        await supertest(Server)
             .get('/api/vehicle')
             .set('Accept', 'application/json')
             .set('Authorization', `Bearer ${access_token}`)
@@ -34,7 +35,7 @@ describe("Must test api calls", function() {
     });
 
     test("Must Try Book Vehicles without access_token", async function () {
-        const { body } = await request(app)
+        const { body } = await supertest(Server)
             .post('/api/book/vehicle')
             .set('Accept', 'application/json')
             .set('Content-Type', 'application/json')
@@ -47,7 +48,7 @@ describe("Must test api calls", function() {
     });
 
     test("Must Book a Vehicle", async function () {
-        const {body} = await request(app)
+        const {body} = await supertest(Server)
             .post('/api/book/vehicle')
             .set('Content-Type', 'application/json')
             .set('Authorization', `Bearer ${access_token}`)
@@ -56,7 +57,7 @@ describe("Must test api calls", function() {
             })
             .expect(200);
         expect(body).toBeTruthy();
-        await request(app)
+        await supertest(Server)
             .put('/api/return/vehicle')
             .set('Accept', 'application/json')
             .set('Content-Type', 'application/json')

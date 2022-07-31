@@ -1,7 +1,6 @@
 import supertest from "supertest";
-//import Server from "../../src/Server";
-import app from "../../src/infra/http/Api";
-const Server = app;
+import Server from "../../src/Server";
+
 jest.setTimeout(50000);
 describe("Must test api calls", function() {
     let access_token: string;

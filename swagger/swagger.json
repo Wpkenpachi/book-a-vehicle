@@ -170,6 +170,9 @@
         "GetVehiclesResponse": {
             "type": "object",
             "properties": {
+                "model": {
+                    "type": "string"
+                },
                 "plate": {
                      "type": "string"
                 },

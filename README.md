@@ -16,7 +16,12 @@
     $ docker-compose up
 
 # Swagger
-Abrir  <a href="http://localhost:3000/api/docs">http://localhost:3000/api/docs</a>
+Open  <a href="http://localhost:3000/api/docs">http://localhost:3000/api/docs</a>
+
+OBS: Test users credenctials. Source [database.sql](database.sql) <br/>
+
+    - wesley.santos 1234
+    - wesley.paulo 4321
 
 #
 

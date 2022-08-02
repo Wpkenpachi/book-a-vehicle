@@ -6,11 +6,12 @@ export default class GetVehicle {
     async execute(): Promise<Output[]|Error> {
         const vehicles = await this.vehicleRepository.list();
         if (vehicles instanceof(Error)) return vehicles;
-        return vehicles.map(({ plate, is_available }) => ({ plate, is_available }));
+        return vehicles.map(({ model, plate, is_available }) => ({ model, plate, is_available }));
     }
 }
 
 type Output = {
+    model: string,
     plate: string,
     is_available: number
 }

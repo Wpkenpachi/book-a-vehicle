@@ -27,6 +27,7 @@ export default class VehicleDatabaseRepository implements VehicleRepository {
         try {
             const raw = await this.connection.query(`
                     select
+                    vehicles.model,
                     vehicles.plate,
                     CASE
                         WHEN (
